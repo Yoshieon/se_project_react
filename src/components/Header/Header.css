@@ -29,6 +29,10 @@
   margin: 0 20px 0 auto;
 }
 
+.header__add-clothes-btn:hover {
+  color: rgba(0, 0, 0, 0.158);
+}
+
 .header__user-container {
   display: flex;
   align-items: center;

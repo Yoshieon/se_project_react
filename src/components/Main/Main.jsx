@@ -1,4 +1,5 @@
 import "./Main.css";
+import closeIcon from "../../assets/close-btn-modal.svg";
 
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
