@@ -1,0 +1,86 @@
+.page {
+  background-color: #f3f3f3;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Label Styling */
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.modal__label_type_radio {
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Input Styling */
+.modal__input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.modal__input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.3);
+}
+
+/* Radio Input Styling */
+.modal__radio-input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Button Styling */
+.modal__submit {
+  padding: 12px 20px;
+  margin-top: 24px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal__submit:hover {
+  background-color: #357abd;
+}
+
+.modal__submit:active {
+  background-color: #265a8a;
+}
+
+.modal__close {
+  background-color: transparent;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.modal__close:hover {
+  color: #333;
+}

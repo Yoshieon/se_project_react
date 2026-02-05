@@ -1,0 +1,17 @@
+.footer {
+  background-color: #f5f5f5;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer__copyright {
+  top: 778px;
+  left: 40px;
+  font-family: "Cabinet Grotesk";
+  margin: 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+  line-height: 20px;
+}
