@@ -6,20 +6,20 @@ function ModalWithForm({
   children,
   buttonText,
   title,
-  activeModal,
+  isOpen,
   onClose,
   onSubmit,
   isSubmitDisabled,
 }) {
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape" && activeModal) {
+      if (e.key === "Escape" && isOpen) {
         onClose();
       }
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [activeModal, onClose]);
+  }, [isOpen, onClose]);
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -28,7 +28,7 @@ function ModalWithForm({
 
   return (
     <div
-      className={`modal ${activeModal === "add-garment" && "modal_opened"}`}
+      className={`isOpen ${isOpen === "add-garment" && "modal_opened"}`}
       onClick={handleBackdropClick}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
@@ -37,7 +37,10 @@ function ModalWithForm({
         </button>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button type="submit" className="modal__submit" disabled={isSubmitDisabled}>
+          <button
+            type="submit"
+            className="modal__submit"
+            disabled={isSubmitDisabled}>
             {buttonText}
           </button>
         </form>

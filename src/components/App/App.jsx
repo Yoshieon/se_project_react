@@ -19,7 +19,7 @@ function App() {
     city: "",
   });
 
-  const [activeModal, setActiveModal] = useState("");
+  const [isOpen, setisOpen] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");
   const [name, setName] = useState("");
@@ -44,11 +44,11 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
-    setActiveModal("");
+    setisOpen("");
   };
 
   const handleCardClick = (card) => {
-    setActiveModal("preview");
+    setisOpen("preview");
     setSelectedCard(card);
   };
 
@@ -56,12 +56,28 @@ function App() {
     setName("");
     setImageUrl("");
     setSelectedWeatherType("");
-    setActiveModal("add-garment");
+    setisOpen("add-garment");
   };
 
-  const closeActiveModal = () => {
-    setActiveModal("");
+  const closeisOpen = () => {
+    setisOpen("");
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeisOpen();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -85,8 +101,8 @@ function App() {
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
-        activeModal={activeModal}
-        onClose={closeActiveModal}
+        isOpen={isOpen === "add-garment"}
+        onClose={closeisOpen}
         onSubmit={handleFormSubmit}
         isSubmitDisabled={!isFormValid}>
         <label htmlFor="name" className="modal__label">
@@ -157,11 +173,7 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
-      <ItemModal
-        activeModal={activeModal}
-        card={selectedCard}
-        onClose={closeActiveModal}
-      />
+      <ItemModal isOpen={isOpen} card={selectedCard} onClose={closeisOpen} />
       <Footer />
     </div>
   );
