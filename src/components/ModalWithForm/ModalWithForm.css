@@ -11,6 +11,14 @@
   visibility: hidden;
 }
 
+.modal__title {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 24px;
+}
+
 .modal_opened {
   visibility: visible;
 }
@@ -61,6 +69,8 @@
 
 .modal__input {
   display: block;
+  border: none;
+  border-bottom: 1px solid #000000;
 }
 
 .modal__radio-buttons {
