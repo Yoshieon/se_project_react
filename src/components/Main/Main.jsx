@@ -3,9 +3,8 @@ import closeIcon from "../../assets/close-btn-modal.svg";
 
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 
-function Main({ weatherData, handleCardClick }) {
+function Main({ weatherData, handleCardClick, defaultClothingItems }) {
   return (
     <main>
       <WeatherCard weatherData={weatherData} />

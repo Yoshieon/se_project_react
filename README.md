@@ -1,5 +1,7 @@
 # React + Vite
 
+Recording Of Project: https://www.loom.com/share/0c7e92d4c9674ccb823dfb9003c693b5
+
 ## Description
 
 A Weather Application that indicates real time in real places with JSX file implemation.

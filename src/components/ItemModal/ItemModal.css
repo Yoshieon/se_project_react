@@ -9,7 +9,6 @@
 
 .modal__image {
   object-fit: contain;
-  border-radius: 16px;
   width: 100%;
   height: auto;
   display: block;
@@ -22,8 +21,10 @@
 
 .modal__caption {
   margin-left: 32px;
+  margin-top: 12px;
   font-family: "Cabinet Grotesk";
   font-size: 20px;
+  font-weight: 700;
   line-height: 24px;
 }
 
@@ -31,7 +32,10 @@
   font-family: "Cabinet Grotesk";
   font-size: 20px;
   line-height: 24px;
-  font-weight: 400;
-  width: 115px;
+  font-weight: 700;
   margin-left: 32px;
+}
+
+.modal__footer {
+  padding: 32px;
 }

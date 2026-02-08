@@ -16,7 +16,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .modal_opened {
@@ -39,6 +39,24 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s;
+}
+
+.modal__submit {
+  display: flex;
+  flex-direction: row;
+  padding: 8px 16px 8px 16px;
+  background-color: #000000;
+  opacity: 0.3;
+  color: white;
+  width: 124px;
+  height: 36px;
+  font-family: "Cabinet Grotesk";
+  border-radius: 4px;
+  margin-top: 40px;
+  line-height: 20px;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .modal__close:hover {

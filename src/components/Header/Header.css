@@ -1,11 +1,25 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 32px 0 28px;
 }
 
 .header__logo {
-  margin-right: 24px;
+  /* spacing handled by section gap */
+}
+
+.header__section {
+  display: flex;
+  align-items: center;
+}
+
+.header__left {
+  gap: 24px;
+}
+
+.header__right {
+  gap: 20px;
 }
 
 .header__date-and-location {
@@ -24,13 +38,12 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  margin-left: auto;
-  margin-right: 20px;
-  margin: 0 20px 0 auto;
+  margin: 0;
+  padding: 6px 12px;
 }
 
 .header__add-clothes-btn:hover {
-  color: rgba(0, 0, 0, 0.158);
+  opacity: 0.6;
 }
 
 .header__user-container {
@@ -43,4 +56,7 @@
   margin: 0;
   font-family: "Cabinet Grotesk";
   font-size: 20px;
+  font-weight: 700;
+  margin-left: 20px;
+  line-height: 100%;
 }

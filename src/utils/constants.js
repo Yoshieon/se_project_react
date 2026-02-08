@@ -3,7 +3,7 @@ export const weatherOptions = [
   {
     day: true,
     condition: "clear",
-    url: new URL("../assets/day/clear.svg", import.meta.url).href,
+    url: new URL("../assets/day/sunny.svg", import.meta.url).href,
   },
   {
     day: true,

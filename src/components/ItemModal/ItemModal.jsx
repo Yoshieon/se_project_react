@@ -1,9 +1,27 @@
+import { useEffect } from "react";
 import "./ItemModal.css";
 import closeIcon from "../../assets/close-btn-modal.svg";
 
 function ItemModal({ activeModal, onClose, card }) {
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape" && activeModal) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [activeModal, onClose]);
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
+    <div
+      className={`modal ${activeModal === "preview" && "modal_opened"}`}
+      onClick={handleBackdropClick}>
       <div className="modal__content modal__content_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           <img src={closeIcon} alt="Close" />
