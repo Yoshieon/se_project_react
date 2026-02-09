@@ -28,7 +28,7 @@ function ModalWithForm({
 
   return (
     <div
-      className={`isOpen ${isOpen === "add-garment" && "modal_opened"}`}
+      className={`modal ${isOpen ? "modal_opened" : ""}`}
       onClick={handleBackdropClick}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
