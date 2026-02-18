@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./ItemModal.css";
 import closeIcon from "../../assets/close-btn-modal.svg";
 
-function ItemModal({ isOpen, onClose, card }) {
+function ItemModal({ isOpen, onClose, card, onDelete }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isOpen) {
@@ -26,10 +26,16 @@ function ItemModal({ isOpen, onClose, card }) {
         <button onClick={onClose} type="button" className="modal__close">
           <img src={closeIcon} alt="Close" />
         </button>
-        <img src={card.link} alt="card-image" className="modal__image" />
+        <img src={card.imageUrl} alt="card-image" className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
+          <button
+            type="button"
+            className="modal__delete"
+            onClick={() => onDelete && onDelete(card && (card._id || card.id))}>
+            Delete
+          </button>
         </div>
       </div>
     </div>

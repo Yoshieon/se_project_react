@@ -1,0 +1,14 @@
+.clothes-section {
+  flex-grow: 1;
+}
+
+.clothes-section__row {
+  display: flex;
+}
+
+.clothes-section__items {
+  display: grid;
+  grid-template-columns: repeat (auto-fit, 283px);
+  grid-template-rows: repeat (auto-fit, 283px);
+  padding: 0;
+}

@@ -50,32 +50,6 @@
   cursor: pointer;
 }
 
-/* .modal__submit {
-  display: flex;
-  flex-direction: row;
-  padding: 8px 16px 8px 16px;
-  background-color: #000000;
-  opacity: 0.3;
-  color: white;
-  width: 124px;
-  height: 36px;
-  font-family: "Cabinet Grotesk";
-  border-radius: 4px;
-  margin-top: 40px;
-  line-height: 20px;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
-} */
-
-/* .modal__submit:hover {
-  background-color: #357abd;
-} */
-
-/* .modal__submit:active {
-  background-color: #265a8a;
-} */
-
 .modal__close {
   background-color: transparent;
   border: none;

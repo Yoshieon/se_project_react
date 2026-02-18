@@ -1,4 +1,7 @@
 import "./Header.css";
+import { NavLink } from "react-router-dom";
+
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
 
@@ -10,6 +13,7 @@ function Header({ handleAddClick, weatherData }) {
   return (
     <header className="header">
       <div className="header__section header__left">
+        {/* TODO: Set link to home page. */}
         <img className="header__logo" src={avatar} alt="Avatar" />
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
@@ -17,17 +21,19 @@ function Header({ handleAddClick, weatherData }) {
       </div>
 
       <div className="header__section header__right">
+        <ToggleSwitch />
         <button
           onClick={handleAddClick}
           type="button"
           className="header__add-clothes-btn">
           + Add clothes
         </button>
-
-        <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={logo} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
+        <NavLink className="header__nav-link" to="/profile">
+          <div className="header__user-container">
+            <p className="header__username">Terrence Tegegne</p>
+            <img src={logo} alt="Terrence Tegegne" className="header__avatar" />
+          </div>
+        </NavLink>
       </div>
     </header>
   );
