@@ -34,7 +34,7 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
             type="button"
             className="modal__delete"
             onClick={() => onDelete && onDelete(card && (card._id || card.id))}>
-            Delete
+            Delete item
           </button>
         </div>
       </div>

@@ -11,6 +11,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Profile from "../Profile/Profile";
 import ItemModal from "../ItemModal/ItemModal";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { getItems, addItem, removeItem } from "../../utils/api";
@@ -34,6 +35,8 @@ function App() {
   const [imageUrl, setImageUrl] = useState("");
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -76,18 +79,30 @@ function App() {
     addItem(newCardData)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
-        closeAllModals();
+        closeisOpen();
       })
       .catch(console.error);
   };
 
   const deleteItemHandler = (id) => {
+    setItemToDelete(id);
+    setShowDeleteConfirmation(true);
+  };
+
+  const confirmDeleteItem = (id) => {
     removeItem(id)
       .then(() => {
         setClothingItems((prev) => prev.filter((item) => String(item._id) !== String(id)));
+        setShowDeleteConfirmation(false);
+        setItemToDelete(null);
         closeisOpen();
       })
       .catch(console.error);
+  };
+
+  const closeDeleteConfirmation = () => {
+    setShowDeleteConfirmation(false);
+    setItemToDelete(null);
   };
 
   const handleAddClick = () => {
@@ -163,7 +178,7 @@ function App() {
         <AddItemModal
           isOpen={isOpen === "add-garment"}
           onClose={closeisOpen}
-          onAddItem={handleFormSubmit}
+          onAddItem={onAddItem}
           name={name}
           setName={setName}
           imageUrl={imageUrl}
@@ -173,6 +188,12 @@ function App() {
           isFormValid={isFormValid}
         />
         <ItemModal isOpen={isOpen} card={selectedCard} onClose={closeisOpen} onDelete={deleteItemHandler} />
+        <DeleteConfirmationModal
+          isOpen={showDeleteConfirmation}
+          onClose={closeDeleteConfirmation}
+          onConfirm={confirmDeleteItem}
+          itemId={itemToDelete}
+        />
         <Footer />
       </div>
     </CurrentTemperatureUnitContext.Provider>

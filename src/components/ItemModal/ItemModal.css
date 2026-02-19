@@ -29,6 +29,20 @@
   line-height: 24px;
 }
 
+.modal__delete {
+  display: flex;
+  position: absolute;
+  margin-left: 336px;
+  height: 14px;
+  font-weight: 500;
+  background-color: #fff;
+  margin-bottom: 74px;
+  border: none;
+  color: #ff4d00;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk";
+}
+
 .modal__weather {
   font-family: "Cabinet Grotesk";
   font-size: 20px;

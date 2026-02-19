@@ -5,8 +5,10 @@ export default function ClothesSection({ clothingItems, handleCardClick }) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__row">
-        <p>Text</p>
-        <button>Button</button>
+        <p>Your items</p>
+        <button type="button" className="clothes-section__button">
+          + Add new
+        </button>
       </div>
       <ul className="clothes-section__list">
         {clothingItems.map((item) => {

@@ -2,8 +2,32 @@
   flex-grow: 1;
 }
 
+.clothes-section__button {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  margin-left: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #000000;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.clothes-section__button :hover {
+  opacity: 0.7;
+}
+
 .clothes-section__row {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
   display: flex;
+  margin-bottom: 16px;
+  margin-left: 116px;
 }
 
 .clothes-section__items {

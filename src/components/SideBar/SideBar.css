@@ -1,6 +1,6 @@
 .sidebar__profile {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   gap: 16px;
   align-items: center;
 }

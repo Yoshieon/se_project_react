@@ -5,9 +5,8 @@ import SideBar from "../SideBar/SideBar";
 export default function Profile({ clothingItems, handleCardClick }) {
   return (
     <section className="profile">
-      <SideBar />;
+      <SideBar />
       <ClothesSection onClick={handleCardClick} clothingItems={clothingItems} />
-      ;
     </section>
   );
 }
