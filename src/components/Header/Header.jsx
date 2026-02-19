@@ -13,8 +13,9 @@ function Header({ handleAddClick, weatherData }) {
   return (
     <header className="header">
       <div className="header__section header__left">
-        {/* TODO: Set link to home page. */}
-        <img className="header__logo" src={avatar} alt="Avatar" />
+        <NavLink to="/" className="header__logo-link">
+          <img className="header__logo" src={avatar} alt="Avatar" />
+        </NavLink>
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
         </p>
