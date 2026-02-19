@@ -15,7 +15,7 @@ import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmati
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { getItems, addItem, removeItem } from "../../utils/api";
-import CurrentTemperatureUnitContext from "../context/CurrentTemperatureUnitContext.js";
+import CurrentTemperatureUnitContext from "../../utils/context/CurrentTemperatureUnitContext.js";
 import AddItemModal from "../AddItemModal/AddItemModal";
 // import { clothingItems } from "../../utils/constants";
 
