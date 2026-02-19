@@ -4,7 +4,7 @@ import closeIcon from "../../assets/close-btn-modal.svg";
 
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import CurrentTemperatureUnitContext from "../context/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../context/CurrentTemperatureUnitContext.js";
 
 function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);

@@ -15,7 +15,7 @@ import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmati
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { getItems, addItem, removeItem } from "../../utils/api";
-import CurrentTemperatureUnitContext from "../context/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../context/CurrentTemperatureUnitContext.js";
 import AddItemModal from "../AddItemModal/AddItemModal";
 // import { clothingItems } from "../../utils/constants";
 
@@ -92,7 +92,9 @@ function App() {
   const confirmDeleteItem = (id) => {
     removeItem(id)
       .then(() => {
-        setClothingItems((prev) => prev.filter((item) => String(item._id) !== String(id)));
+        setClothingItems((prev) =>
+          prev.filter((item) => String(item._id) !== String(id)),
+        );
         setShowDeleteConfirmation(false);
         setItemToDelete(null);
         closeisOpen();
@@ -187,7 +189,12 @@ function App() {
           setSelectedWeatherType={setSelectedWeatherType}
           isFormValid={isFormValid}
         />
-        <ItemModal isOpen={isOpen} card={selectedCard} onClose={closeisOpen} onDelete={deleteItemHandler} />
+        <ItemModal
+          isOpen={isOpen}
+          card={selectedCard}
+          onClose={closeisOpen}
+          onDelete={deleteItemHandler}
+        />
         <DeleteConfirmationModal
           isOpen={showDeleteConfirmation}
           onClose={closeDeleteConfirmation}
