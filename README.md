@@ -1,6 +1,7 @@
 # React + Vite
 
-Recording Of Project: https://www.loom.com/share/0c7e92d4c9674ccb823dfb9003c693b5
+Recording Of Project Part 1: https://www.loom.com/share/0c7e92d4c9674ccb823dfb9003c693b5
+Recording of Project Part 2: https://www.loom.com/share/0f5b6dbd599d4dc6b7f6bf05929133e9
 
 ## Description
 

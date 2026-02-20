@@ -28,18 +28,18 @@ function App() {
     isDay: false,
   });
 
-  const [isOpen, setisOpen] = useState("");
+  const [isOpen, setIsOpen] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
-    setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const [defaultClothingItemsState, setDefaultClothingItems] =
@@ -61,11 +61,11 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
-    setisOpen("");
+    setIsOpen("");
   };
 
   const handleCardClick = (card) => {
-    setisOpen("preview");
+    setIsOpen("preview");
     setSelectedCard(card);
   };
 
@@ -93,7 +93,7 @@ function App() {
     removeItem(id)
       .then(() => {
         setClothingItems((prev) =>
-          prev.filter((item) => String(item._id) !== String(id)),
+          prev.filter((item) => String(item._id ?? item.id) !== String(id)),
         );
         setShowDeleteConfirmation(false);
         setItemToDelete(null);
@@ -111,11 +111,11 @@ function App() {
     setName("");
     setImageUrl("");
     setSelectedWeatherType("");
-    setisOpen("add-garment");
+    setIsOpen("add-garment");
   };
 
   const closeisOpen = () => {
-    setisOpen("");
+    setIsOpen("");
   };
 
   useEffect(() => {
@@ -170,38 +170,49 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  onClick={handleCardClick}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                   clothingItems={clothingItems}
                 />
               }
             />
           </Routes>
+
+          <AddItemModal
+            isOpen={isOpen === "add-garment"}
+            onClose={closeisOpen}
+            onAddItem={onAddItem}
+            name={name}
+            setName={setName}
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            selectedWeatherType={selectedWeatherType}
+            setSelectedWeatherType={setSelectedWeatherType}
+            isFormValid={isFormValid}
+          />
+          <ItemModal
+            isOpen={isOpen}
+            card={selectedCard}
+            onClose={closeisOpen}
+            onDelete={deleteItemHandler}
+          />
+          <DeleteConfirmationModal
+            isOpen={showDeleteConfirmation}
+            onClose={closeDeleteConfirmation}
+            onConfirm={confirmDeleteItem}
+            itemId={itemToDelete}
+          />
+          <Footer />
         </div>
-        <AddItemModal
-          isOpen={isOpen === "add-garment"}
-          onClose={closeisOpen}
-          onAddItem={onAddItem}
-          name={name}
-          setName={setName}
-          imageUrl={imageUrl}
-          setImageUrl={setImageUrl}
-          selectedWeatherType={selectedWeatherType}
-          setSelectedWeatherType={setSelectedWeatherType}
-          isFormValid={isFormValid}
-        />
-        <ItemModal
-          isOpen={isOpen}
-          card={selectedCard}
-          onClose={closeisOpen}
-          onDelete={deleteItemHandler}
-        />
-        <DeleteConfirmationModal
-          isOpen={showDeleteConfirmation}
-          onClose={closeDeleteConfirmation}
-          onConfirm={confirmDeleteItem}
-          itemId={itemToDelete}
-        />
-        <Footer />
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );

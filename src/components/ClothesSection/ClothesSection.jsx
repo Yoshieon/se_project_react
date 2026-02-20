@@ -1,12 +1,12 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-export default function ClothesSection({ clothingItems, handleCardClick }) {
+export default function ClothesSection({ clothingItems, handleCardClick, handleAddClick }) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__row">
         <p>Your items</p>
-        <button type="button" className="clothes-section__button">
+        <button type="button" className="clothes-section__button" onClick={handleAddClick}>
           + Add new
         </button>
       </div>
