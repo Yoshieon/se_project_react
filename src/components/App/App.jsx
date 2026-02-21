@@ -114,6 +114,17 @@ function App() {
     setIsOpen("add-garment");
   };
 
+  const handleAddItemSubmit = (newItem) => {
+    APIkey.addItem(newItem)
+      .then((addedItem) => {
+        setClothingItems([addedItem, ...clothingItems]);
+        setIsAddModalOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
+  };
+
   const closeisOpen = () => {
     setIsOpen("");
   };
@@ -161,15 +172,6 @@ function App() {
               element={
                 <Main
                   weatherData={weatherData}
-                  handleCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                 />

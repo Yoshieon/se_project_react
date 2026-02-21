@@ -31,8 +31,12 @@
 }
 
 .clothes-section__items {
-  display: grid;
-  grid-template-columns: repeat (auto-fit, 283px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  cursor: zoom-in;
+  /* grid-template-columns: repeat (auto-fit, 283px);
   grid-template-rows: repeat (auto-fit, 283px);
-  padding: 0;
+  padding: 0; */
 }
