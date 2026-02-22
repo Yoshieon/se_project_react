@@ -2,8 +2,19 @@ const baseUrl = "http://localhost:3001";
 
 const headers = { "Content-Type": "application/json" };
 
-const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export const handleServerResponse = async (res) => {
+  if (res.ok) return res.json();
+  const contentType = res.headers.get("content-type") || "";
+  try {
+    if (contentType.includes("application/json")) {
+      const errBody = await res.json();
+      throw new Error(errBody?.message || `Error: ${res.status}`);
+    }
+    const text = await res.text();
+    throw new Error(text || `Error: ${res.status}`);
+  } catch (err) {
+    throw err instanceof Error ? err : new Error(String(err));
+  }
 };
 
 export const getItems = () => {
