@@ -3,15 +3,6 @@ import "./ItemModal.css";
 import closeIcon from "../../assets/close-btn-modal.svg";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();

@@ -28,7 +28,7 @@ function App() {
     isDay: false,
   });
 
-  const [isOpen, setIsOpen] = useState("");
+  const [isOpen, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");
   const [name, setName] = useState("");
@@ -61,11 +61,11 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
-    setIsOpen("");
+    setActiveModal("");
   };
 
   const handleCardClick = (card) => {
-    setIsOpen("preview");
+    setActiveModal("preview");
     setSelectedCard(card);
   };
 
@@ -79,7 +79,7 @@ function App() {
     addItem(newCardData)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
-        closeisOpen();
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -97,7 +97,7 @@ function App() {
         );
         setShowDeleteConfirmation(false);
         setItemToDelete(null);
-        closeisOpen();
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -111,22 +111,11 @@ function App() {
     setName("");
     setImageUrl("");
     setSelectedWeatherType("");
-    setIsOpen("add-garment");
+    setActiveModal("add-garment");
   };
 
-  const handleAddItemSubmit = (newItem) => {
-    APIkey.addItem(newItem)
-      .then((addedItem) => {
-        setClothingItems([addedItem, ...clothingItems]);
-        setIsAddModalOpen(false);
-      })
-      .catch((error) => {
-        console.error("Error adding item:", error);
-      });
-  };
-
-  const closeisOpen = () => {
-    setIsOpen("");
+  const closeActiveModal = () => {
+    setActiveModal("");
   };
 
   useEffect(() => {
@@ -134,7 +123,7 @@ function App() {
 
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
-        closeisOpen();
+        closeActiveModal();
       }
     };
 
@@ -191,7 +180,7 @@ function App() {
 
           <AddItemModal
             isOpen={isOpen === "add-garment"}
-            onClose={closeisOpen}
+            onClose={closeActiveModal}
             onAddItem={onAddItem}
             name={name}
             setName={setName}
@@ -204,7 +193,7 @@ function App() {
           <ItemModal
             isOpen={isOpen}
             card={selectedCard}
-            onClose={closeisOpen}
+            onClose={closeActiveModal}
             onDelete={deleteItemHandler}
           />
           <DeleteConfirmationModal

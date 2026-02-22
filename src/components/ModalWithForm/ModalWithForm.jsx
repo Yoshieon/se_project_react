@@ -11,15 +11,6 @@ function ModalWithForm({
   onSubmit,
   isSubmitDisabled,
 }) {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
