@@ -1,38 +1,38 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
+import { useEffect } from "react";
 
-const AddItemModal = ({
-  isOpen,
-  onAddItem,
-  onClose,
-  name,
-  setName,
-  imageUrl,
-  setImageUrl,
-  selectedWeatherType,
-  setSelectedWeatherType,
-  isFormValid,
-}) => {
+const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
+  const { values, handleChange, resetForm } = useForm({
+    name: "",
+    weatherType: "",
+    imageUrl: "",
+  });
+
+  const isImageUrlValid = (() => {
+    if (!values.imageUrl) return false;
+    try {
+      new URL(values.imageUrl);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  })();
+
+  const isFormValid =
+    values.name.trim() !== "" && isImageUrlValid && values.weatherType !== "";
+
   function handleSubmit(evt) {
     evt.preventDefault();
     if (!isFormValid) return;
-    onAddItem({
-      name,
-      imageUrl,
-      weatherType: selectedWeatherType,
-    });
+    onAddItem(values);
   }
 
-  const handleNameChange = (evt) => {
-    setName(evt.target.value);
-  };
-
-  const handleImageUrlChange = (evt) => {
-    setImageUrl(evt.target.value);
-  };
-
-  const handleWeatherChange = (evt) => {
-    setSelectedWeatherType(evt.target.value);
-  };
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -48,11 +48,12 @@ const AddItemModal = ({
           type="text"
           className="modal__input"
           id="name"
+          name="name"
           placeholder="name"
           minLength="1"
           maxLength="30"
-          value={name}
-          onChange={handleNameChange}
+          value={values.name}
+          onChange={handleChange}
           required
         />
       </label>
@@ -62,9 +63,10 @@ const AddItemModal = ({
           type="url"
           className="modal__input"
           id="imageUrl"
+          name="imageUrl"
           placeholder="Image URL"
-          value={imageUrl}
-          onChange={handleImageUrlChange}
+          value={values.imageUrl}
+          onChange={handleChange}
           required
         />
       </label>
@@ -77,8 +79,8 @@ const AddItemModal = ({
             name="weatherType"
             value="hot"
             className="modal__radio-input"
-            checked={selectedWeatherType === "hot"}
-            onChange={handleWeatherChange}
+            checked={values.weatherType === "hot"}
+            onChange={handleChange}
           />{" "}
           Hot
         </label>
@@ -89,8 +91,8 @@ const AddItemModal = ({
             name="weatherType"
             value="warm"
             className="modal__radio-input"
-            checked={selectedWeatherType === "warm"}
-            onChange={handleWeatherChange}
+            checked={values.weatherType === "warm"}
+            onChange={handleChange}
           />{" "}
           Warm
         </label>
@@ -101,8 +103,8 @@ const AddItemModal = ({
             name="weatherType"
             value="cold"
             className="modal__radio-input"
-            checked={selectedWeatherType === "cold"}
-            onChange={handleWeatherChange}
+            checked={values.weatherType === "cold"}
+            onChange={handleChange}
           />{" "}
           Cold
         </label>

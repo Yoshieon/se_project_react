@@ -30,9 +30,6 @@ function App() {
 
   const [isOpen, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [selectedWeatherType, setSelectedWeatherType] = useState("");
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -45,24 +42,7 @@ function App() {
   const [defaultClothingItemsState, setDefaultClothingItems] =
     useState(defaultClothingItems);
 
-  const isImageUrlValid = (() => {
-    if (!imageUrl) return false;
-    try {
-      new URL(imageUrl);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  })();
 
-  const isFormValid =
-    name.trim() !== "" && isImageUrlValid && selectedWeatherType !== "";
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (!isFormValid) return;
-    setActiveModal("");
-  };
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -108,9 +88,6 @@ function App() {
   };
 
   const handleAddClick = () => {
-    setName("");
-    setImageUrl("");
-    setSelectedWeatherType("");
     setActiveModal("add-garment");
   };
 
@@ -182,13 +159,6 @@ function App() {
             isOpen={isOpen === "add-garment"}
             onClose={closeActiveModal}
             onAddItem={onAddItem}
-            name={name}
-            setName={setName}
-            imageUrl={imageUrl}
-            setImageUrl={setImageUrl}
-            selectedWeatherType={selectedWeatherType}
-            setSelectedWeatherType={setSelectedWeatherType}
-            isFormValid={isFormValid}
           />
           <ItemModal
             isOpen={isOpen}
