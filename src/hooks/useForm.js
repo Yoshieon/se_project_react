@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 
 export function useForm(defaultValues = {}) {
-  const [values, setValues] = useState(defaultValues);
+  const initialValues = useRef(defaultValues);
+  const [values, setValues] = useState(initialValues.current);
 
   const handleChange = useCallback((evt) => {
     const target = evt.target;
@@ -43,12 +44,9 @@ export function useForm(defaultValues = {}) {
     });
   }, []);
 
-  const resetForm = useCallback(
-    (newValues = defaultValues) => {
-      setValues(newValues);
-    },
-    [defaultValues],
-  );
+  const resetForm = useCallback((newValues = initialValues.current) => {
+    setValues(newValues);
+  }, []);
 
   const handleSubmit = useCallback(
     (onSubmit) => (evt) => {

@@ -1,8 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import "./ItemModal.css";
 import closeIcon from "../../assets/close-btn-modal.svg";
+import CurrentUserContext from "../../utils/context/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = Boolean(
+    currentUser &&
+      card &&
+      card.owner &&
+      String(card.owner._id ?? card.owner) === String(currentUser._id),
+  );
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -21,12 +29,14 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
-          <button
-            type="button"
-            className="modal__delete"
-            onClick={() => onDelete && onDelete(card && (card._id || card.id))}>
-            Delete item
-          </button>
+          {onDelete && isOwn && (
+            <button
+              type="button"
+              className="modal__delete"
+              onClick={() => onDelete(card && (card._id || card.id))}>
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>

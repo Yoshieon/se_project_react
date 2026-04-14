@@ -42,6 +42,43 @@
   opacity: 0.6;
 }
 
+.header__auth-btn {
+  font-family: "Cabinet Grotesk";
+  border: none;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 6px 10px;
+}
+
+header__auth-btn:hover {
+  opacity: 0.6;
+}
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header__avatar-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f3f3;
+  color: #000;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 18px;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;

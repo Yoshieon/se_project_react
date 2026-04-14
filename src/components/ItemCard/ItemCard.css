@@ -5,9 +5,18 @@
   justify-content: center;
 }
 
-.card__name {
+.card__header {
   position: absolute;
   top: 35px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 21px;
+}
+
+.card__name {
   margin: 0;
   color: rgba(0, 0, 0, 0.6);
   background-color: rgba(255, 255, 255, 1);
@@ -17,6 +26,36 @@
   font-size: 16px;
   font-style: Bold;
   font-family: "Cabinet Grotesk";
+  padding: 4px 8px;
+}
+
+.card__like-button {
+  background: transparent url("../../assets/like-btn.svg") no-repeat center;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+}
+
+.card__like-button_active {
+  background-image: url("../../assets/like-btn-active.svg");
+  opacity: 1;
+}
+
+.card__image {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 21px;
+  border-radius: 19px;
+  border: 1px;
+  padding: 1px 2px 1px 3px;
 }
 
 .card__image {

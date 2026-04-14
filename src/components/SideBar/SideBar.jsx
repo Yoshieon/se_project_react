@@ -1,12 +1,35 @@
+import { useContext } from "react";
 import "./SideBar.css";
-import logo from "../../assets/logo.svg";
+import CurrentUserContext from "../../utils/context/CurrentUserContext";
 
-export default function SideBar() {
+export default function SideBar({ onEditProfile, onSignOut }) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <aside className="sidebar">
       <div className="sidebar__user-container">
-        <p className="sidebar__username">Terrence Tegegne</p>
-        <img src={logo} alt="Terrence Tegegne" className="sidebar__avatar" />
+        <div className="sidebar__profile">
+          <p className="sidebar__username">{currentUser?.name || "User"}</p>
+          <img
+            src={currentUser?.avatar || ""}
+            alt={currentUser?.name || "User"}
+            className="sidebar__avatar"
+          />
+        </div>
+        <button
+          type="button"
+          className="sidebar__edit-btn"
+          onClick={onEditProfile}
+        >
+          Edit profile
+        </button>
+        <button
+          type="button"
+          className="sidebar__signout-btn"
+          onClick={onSignOut}
+        >
+          Sign out
+        </button>
       </div>
     </aside>
   );

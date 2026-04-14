@@ -19,3 +19,40 @@
   object-fit: cover;
   display: block;
 }
+
+.sidebar__edit-btn {
+  margin-top: 16px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: "Cabinet Grotesk";
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sidebar__edit-btn:hover {
+  opacity: 0.8;
+}
+
+.sidebar__signout-btn {
+  margin-top: 8px;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: "Cabinet Grotesk";
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar__signout-btn:hover {
+  background-color: #000000;
+  color: white;
+}
