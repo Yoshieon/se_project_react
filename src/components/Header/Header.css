@@ -54,7 +54,7 @@
   padding: 6px 10px;
 }
 
-header__auth-btn:hover {
+.header__auth-btn:hover {
   opacity: 0.6;
 }
 

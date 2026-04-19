@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./ItemModal.css";
 import closeIcon from "../../assets/close-btn-modal.svg";
 import CurrentUserContext from "../../utils/context/CurrentUserContext";
@@ -7,9 +7,9 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = Boolean(
     currentUser &&
-      card &&
-      card.owner &&
-      String(card.owner._id ?? card.owner) === String(currentUser._id),
+    card &&
+    card.owner &&
+    String(card.owner._id ?? card.owner) === String(currentUser._id),
   );
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {

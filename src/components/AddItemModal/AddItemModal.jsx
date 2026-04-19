@@ -42,12 +42,12 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isSubmitDisabled={!isFormValid}>
-      <label className="modal__label">
+      <label htmlFor="addItem-name">
         Name{" "}
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="addItem-name"
           name="name"
           placeholder="name"
           minLength="1"
@@ -62,7 +62,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
         <input
           type="url"
           className="modal__input"
-          id="imageUrl"
+          id="addItem-imageUrl"
           name="imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}

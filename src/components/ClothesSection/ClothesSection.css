@@ -16,7 +16,7 @@
   transition: opacity 0.2s;
 }
 
-.clothes-section__button :hover {
+.clothes-section__button:hover {
   opacity: 0.7;
 }
 

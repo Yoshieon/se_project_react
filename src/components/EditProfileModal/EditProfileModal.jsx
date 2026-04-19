@@ -11,8 +11,7 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser }) => {
     avatar: currentUser?.avatar || "",
   });
 
-  const isFormValid =
-    values.name.trim() !== "" && values.avatar.trim() !== "";
+  const isFormValid = values.name.trim() !== "" && values.avatar.trim() !== "";
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -36,14 +35,13 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      isSubmitDisabled={!isFormValid}
-    >
+      isSubmitDisabled={!isFormValid}>
       <label className="modal__label">
         Name
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="editProfile-name"
           name="name"
           placeholder="Name"
           value={values.name}
@@ -56,7 +54,7 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser }) => {
         <input
           type="url"
           className="modal__input"
-          id="avatar"
+          id="editProfile-avatar"
           name="avatar"
           placeholder="Avatar URL"
           value={values.avatar}

@@ -22,3 +22,7 @@ This webpage is deployed to Github Pages
 
 - [Deployment Link](https://github.com/Yoshieon/se_project_react)
 
+## Backend Respository
+
+The backend for this project can be found here: [se_project_express](https://github.com/Yoshieon/se_project_express)
+

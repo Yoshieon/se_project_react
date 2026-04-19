@@ -22,7 +22,7 @@
   background-color: rgba(255, 255, 255, 1);
   border-radius: 4px;
   gap: 8px;
-  font-weight: 700px;
+  font-weight: 700;
   font-size: 16px;
   font-style: Bold;
   font-family: "Cabinet Grotesk";
@@ -54,16 +54,5 @@
   margin-top: 20px;
   margin-left: 21px;
   border-radius: 19px;
-  border: 1px;
-  padding: 1px 2px 1px 3px;
-}
-
-.card__image {
-  width: 100%;
-  display: flex;
-  margin-top: 20px;
-  margin-left: 21px;
-  border-radius: 19px;
-  border: 1px;
   padding: 1px 2px 1px 3px;
 }
