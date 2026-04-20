@@ -181,7 +181,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!activeModal) return;
 
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
@@ -194,7 +194,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [isOpen]);
+  }, [activeModal]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -292,7 +292,7 @@ function App() {
               onUpdateUser={handleUpdateUser}
             />
             <ItemModal
-              isOpen={isOpen}
+              isOpen={activeModal}
               card={selectedCard}
               onClose={closeActiveModal}
               onDelete={isLoggedIn ? deleteItemHandler : undefined}
