@@ -42,7 +42,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isSubmitDisabled={!isFormValid}>
-      <label htmlFor="addItem-name">
+      <label className="addItem-name">
         Name{" "}
         <input
           type="text"

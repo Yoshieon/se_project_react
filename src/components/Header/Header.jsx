@@ -52,27 +52,29 @@ function Header({
             </button>
           </>
         )}
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn">
-          + Add clothes
-        </button>
         {isLoggedIn && (
-          <NavLink className="header__nav-link" to="/profile">
-            <div className="header__user-container">
-              <p className="header__username">{userName}</p>
-              {avatarIsValid ? (
-                <img
-                  src={currentUser.avatar}
-                  alt={userName}
-                  className="header__avatar"
-                />
-              ) : (
-                <div className="header__avatar-placeholder">{userInitial}</div>
-              )}
-            </div>
-          </NavLink>
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn">
+              + Add clothes
+            </button>
+            <NavLink className="header__nav-link" to="/profile">
+              <div className="header__user-container">
+                <p className="header__username">{userName}</p>
+                {avatarIsValid ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={userName}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div className="header__avatar-placeholder">{userInitial}</div>
+                )}
+              </div>
+            </NavLink>
+          </>
         )}
       </div>
     </header>

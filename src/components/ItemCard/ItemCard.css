@@ -1,4 +1,6 @@
 .card {
+  height: 328px;
+  overflow: hidden;
   width: 323px;
   position: relative;
   display: flex;
