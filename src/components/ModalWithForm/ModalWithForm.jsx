@@ -10,6 +10,7 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isSubmitDisabled,
+  secondaryAction,
 }) {
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -28,12 +29,17 @@ function ModalWithForm({
         </button>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button
-            type="submit"
-            className="modal__submit"
-            disabled={isSubmitDisabled}>
-            {buttonText}
-          </button>
+          <div className="modal__actions">
+            <button
+              type="submit"
+              className="modal__submit"
+              disabled={isSubmitDisabled}>
+              {buttonText}
+            </button>
+            {secondaryAction && (
+              <div className="modal__secondary-action">{secondaryAction}</div>
+            )}
+          </div>
         </form>
       </div>
     </div>

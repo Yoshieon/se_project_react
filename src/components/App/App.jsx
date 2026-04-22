@@ -64,7 +64,7 @@ function App() {
 
     addItem(newCardData, token)
       .then((data) => {
-        setClothingItems((prev) => [data, ...prev]);
+        setClothingItems((prev) => [data.data, ...prev]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -157,14 +157,14 @@ function App() {
       ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item)),
+              cards.map((item) => (item._id === id ? updatedCard.data : item)),
             );
           })
           .catch((err) => console.log(err))
       : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item)),
+              cards.map((item) => (item._id === id ? updatedCard.data : item)),
             );
           })
           .catch((err) => console.log(err));
@@ -280,11 +280,13 @@ function App() {
               isOpen={activeModal === "login"}
               onClose={closeActiveModal}
               onLogin={handleLogin}
+              onSwitchToRegister={handleRegisterClick}
             />
             <RegisterModal
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
               onRegister={handleRegister}
+              onSwitchToLogin={handleLoginClick}
             />
             <EditProfileModal
               isOpen={activeModal === "edit-profile"}

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-const RegisterModal = ({ isOpen, onClose, onRegister }) => {
+const RegisterModal = ({ isOpen, onClose, onRegister, onSwitchToLogin }) => {
   const { values, handleChange, resetForm } = useForm({
     name: "",
     avatar: "",
@@ -15,6 +15,10 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
     values.avatar.trim() !== "" &&
     values.email.trim() !== "" &&
     values.password.trim() !== "";
+
+  const handleSwitchToLogin = () => {
+    onSwitchToLogin?.();
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -35,7 +39,17 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      isSubmitDisabled={!isFormValid}>
+      isSubmitDisabled={!isFormValid}
+      secondaryAction={
+        onSwitchToLogin && (
+          <button
+            type="button"
+            className="modal__switch-button"
+            onClick={handleSwitchToLogin}>
+            or Log in
+          </button>
+        )
+      }>
       <label className="modal__label">
         Name
         <input

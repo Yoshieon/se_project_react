@@ -30,6 +30,7 @@
   object-fit: contain;
   width: 100%;
   height: auto;
+  max-height: 498px;
   display: block;
   margin: 0;
 }

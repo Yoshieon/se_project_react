@@ -2,11 +2,15 @@ import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-const LoginModal = ({ isOpen, onClose, onLogin }) => {
+const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
   const { values, handleChange, resetForm } = useForm({
     email: "",
     password: "",
   });
+
+  const handleSwitchToRegister = () => {
+    onSwitchToRegister();
+  };
 
   const isFormValid =
     values.email.trim() !== "" && values.password.trim() !== "";
@@ -30,7 +34,17 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      isSubmitDisabled={!isFormValid}>
+      isSubmitDisabled={!isFormValid}
+      secondaryAction={
+        onSwitchToRegister && (
+          <button
+            type="button"
+            className="modal__switch-button"
+            onClick={handleSwitchToRegister}>
+            or Register
+          </button>
+        )
+      }>
       <label className="modal__label">
         Email
         <input
